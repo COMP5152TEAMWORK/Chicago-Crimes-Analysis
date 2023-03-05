@@ -6,9 +6,9 @@ def f(df: pd.DataFrame):
     df = df.dropna()
     df = df['Community Area'].value_counts().reset_index()
     df['Year'] = year
-    df = df.set_axis(['Community Area', 'Crimes', 'Year'], axis='columns')
-    df['Community Area'] = df['Community Area'].astype('int')
+    df.columns = ['Community Area', 'Counts', 'Year']
     df = df[(df['Community Area'] >= 1) & (df['Community Area'] <= 77)]
+    df['Community Area'] = df['Community Area'].astype('int')
 
     return df
 
